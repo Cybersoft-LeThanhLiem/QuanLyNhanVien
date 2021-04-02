@@ -1,4 +1,5 @@
 var danhsachNV = new DanhSachNhanVien();
+var validation = new Validation();
 
 document.getElementById("btnThemNV").addEventListener("click", function () {
     var txtTK = document.getElementById("tknv").value;
@@ -10,7 +11,12 @@ document.getElementById("btnThemNV").addEventListener("click", function () {
     var txtChucVu = document.getElementById("chucvu").value;
     var txtGioLam = parseInt(document.getElementById("gioLam").value);
 
-    if (true) {
+    var isValid = true;
+
+    // Kiểm tra tài khoản nhân viên
+    isValid &= validation.checkEmpty(txtTK, "tbTKNV", "Tài khoản nhân viên không được để trống!") && validation.checkAcc(txtTK, "tbTKNV", "Tài khoản chỉ được bao gồm chữ và số, 4 - 6 ký tự");
+
+    if (isValid) {
         var nv = new NhanVien(txtTK, txtTenNV, txtEmail, txtPassword, txtNgayLam, txtLuongCB, txtChucVu, txtGioLam);
         nv.tinhLuong();
         nv.xepLoai();
