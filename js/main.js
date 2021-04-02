@@ -35,10 +35,16 @@ function hienthiDS(dsnv) {
                 <td>${nv.loai}</td>
                 <td>
                     <button class="btn btn-info">Xem</button>
+                    <button class="btn btn-danger" onclick="xoaNhanVien('${nv.tk}')">Xóa</button>
                 </td>
             </tr>
         `;
     });
 
     document.getElementById("tableDanhSach").innerHTML = content;
+}
+
+function xoaNhanVien(acc) {
+    danhsachNV.xoaNV(acc);
+    hienthiDS(danhsachNV.mangNV);
 }
