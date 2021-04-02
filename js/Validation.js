@@ -21,4 +21,18 @@ function Validation() {
             return false;
         }
     }
+
+    this.checkName = function (input, spanID, message) {
+        var namePattern = new RegExp("^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" + "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" + "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý\\s]+$");
+
+        if (namePattern.test(input)) {
+            // tên hợp lệ
+            document.getElementById(spanID).innerHTML = "";
+            return true;
+        } else {
+            document.getElementById(spanID).innerHTML = message;
+            document.getElementById(spanID).style.display = "block";
+            return false;
+        }
+    }
 }

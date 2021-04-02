@@ -16,6 +16,9 @@ document.getElementById("btnThemNV").addEventListener("click", function () {
     // Kiểm tra tài khoản nhân viên
     isValid &= validation.checkEmpty(txtTK, "tbTKNV", "Tài khoản nhân viên không được để trống!") && validation.checkAcc(txtTK, "tbTKNV", "Tài khoản chỉ được bao gồm chữ và số, 4 - 6 ký tự");
 
+    // Kiểm tra họ tên
+    isValid &= validation.checkEmpty(txtTenNV, "tbTen", "Họ tên không được để trống!") && validation.checkName(txtTenNV, "tbTen", "Tên không hợp lệ");
+
     if (isValid) {
         var nv = new NhanVien(txtTK, txtTenNV, txtEmail, txtPassword, txtNgayLam, txtLuongCB, txtChucVu, txtGioLam);
         nv.tinhLuong();
