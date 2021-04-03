@@ -7,9 +7,9 @@ document.getElementById("btnThemNV").addEventListener("click", function () {
     var txtEmail = document.getElementById("email").value;
     var txtPassword = document.getElementById("password").value;
     var txtNgayLam = document.getElementById("datepicker").value;
-    var txtLuongCB = parseInt(document.getElementById("luongCB").value);
+    var txtLuongCB = document.getElementById("luongCB").value;
     var txtChucVu = document.getElementById("chucvu").value;
-    var txtGioLam = parseInt(document.getElementById("gioLam").value);
+    var txtGioLam = document.getElementById("gioLam").value;
 
     var isValid = true;
 
@@ -19,8 +19,26 @@ document.getElementById("btnThemNV").addEventListener("click", function () {
     // Kiểm tra họ tên
     isValid &= validation.checkEmpty(txtTenNV, "tbTen", "Họ tên không được để trống!") && validation.checkName(txtTenNV, "tbTen", "Tên không hợp lệ");
 
+    // Kiểm tra email
+    isValid &= validation.checkEmpty(txtEmail, "tbEmail", "Email không được để trống!") && validation.checkEmail(txtEmail, "tbEmail", "Email không đúng định dạng!");
+
+    // Kiểm tra mật khẩu
+    isValid &= validation.checkEmpty(txtPassword, "tbMatKhau", "Mật khẩu không được để trống!") && validation.checkPassword(txtPassword, "tbMatKhau", "Mật khẩu không hợp lệ!");
+
+    // Kiểm tra ngày làm
+    isValid &= validation.checkEmpty(txtNgayLam, "tbNgay", "Ngày làm không được để trống!") && validation.checkDate(txtNgayLam, "tbNgay", "Ngày không hợp lệ!");
+
+    // Kiểm tra lương cơ bản
+    isValid &= validation.checkEmpty(txtLuongCB, "tbLuongCB", "Lương cơ bản không được để trống") && validation.checkLCB(txtLuongCB, "tbLuongCB", "Mức lương không hợp lệ!");
+
+    // Kiểm tra chức vụ
+    isValid &= validation.checkPosition("chucvu", "tbChucVu", "Vui lòng chọn chức vụ!");
+
+    // Kiểm tra giờ làm trong tháng
+    isValid &= validation.checkEmpty(txtGioLam, "tbGiolam", "Giờ làm việc không được để trống!") && validation.checkHour(txtGioLam, "tbGiolam", "Giờ làm việc không hợp lệ (80 - 200 giờ)");
+
     if (isValid) {
-        var nv = new NhanVien(txtTK, txtTenNV, txtEmail, txtPassword, txtNgayLam, txtLuongCB, txtChucVu, txtGioLam);
+        var nv = new NhanVien(txtTK, txtTenNV, txtEmail, txtPassword, txtNgayLam, parseInt(txtLuongCB), txtChucVu, parseInt(txtGioLam));
         nv.tinhLuong();
         nv.xepLoai();
 
