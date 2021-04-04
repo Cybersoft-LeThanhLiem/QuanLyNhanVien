@@ -95,6 +95,10 @@ function chitietNV(acc) {
 
 function resetForm() {
     document.getElementById("inputForm").reset();
+    const thongbao = ["tbTKNV", "tbTen", "tbEmail", "tbMatKhau", "tbNgay", "tbLuongCB", "tbChucVu", "tbGiolam"];
+    thongbao.forEach(function (item) {
+        document.getElementById(item).innerHTML = "";
+    });
 }
 
 document.getElementById("btnCapNhat").addEventListener("click", function () {
