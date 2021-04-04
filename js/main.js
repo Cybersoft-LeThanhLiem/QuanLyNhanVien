@@ -14,7 +14,7 @@ document.getElementById("btnThemNV").addEventListener("click", function () {
     var isValid = true;
 
     // Kiểm tra tài khoản nhân viên
-    isValid &= validation.checkEmpty(txtTK, "tbTKNV", "Tài khoản nhân viên không được để trống!") && validation.checkAcc(txtTK, "tbTKNV", "Tài khoản chỉ được bao gồm chữ và số, 4 - 6 ký tự");
+    isValid &= validation.checkEmpty(txtTK, "tbTKNV", "Tài khoản nhân viên không được để trống!") && validation.checkAcc(txtTK, "tbTKNV", "Tài khoản chỉ được bao gồm chữ và số, 4 - 6 ký tự") && validation.checkUnique(txtTK, "tbTKNV", "Tên tài khoản này đã tồn tại!", danhsachNV.mangNV);
 
     // Kiểm tra họ tên
     isValid &= validation.checkEmpty(txtTenNV, "tbTen", "Họ tên không được để trống!") && validation.checkName(txtTenNV, "tbTen", "Tên không hợp lệ");
@@ -82,7 +82,6 @@ function chitietNV(acc) {
     if (viTri >= 0) {
         var nv = danhsachNV.mangNV[viTri];
         
-        document.getElementById("tknv").disabled = true;
         document.getElementById("tknv").value = nv.tk;
         document.getElementById("name").value = nv.tenNV;
         document.getElementById("email").value = nv.email;
@@ -96,7 +95,6 @@ function chitietNV(acc) {
 
 function resetForm() {
     document.getElementById("inputForm").reset();
-    document.getElementById("tknv").disabled = false;
 }
 
 document.getElementById("btnCapNhat").addEventListener("click", function () {

@@ -22,6 +22,23 @@ function Validation() {
         }
     }
 
+    this.checkUnique = function (input, spanID, message, mangNV) {
+        var isExist = false;
+
+        isExist = mangNV.some(function (item) {
+            return item.tk == input;
+        });
+
+        if (isExist) {
+            document.getElementById(spanID).innerHTML = message;
+            document.getElementById(spanID).style.display = "block";
+            return false;
+        } else {
+            document.getElementById(spanID).innerHTML = "";
+            return true;
+        }
+    }
+
     this.checkName = function (input, spanID, message) {
         var namePattern = new RegExp("^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" + "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" + "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹý\\s]+$");
 
