@@ -81,7 +81,7 @@ function chitietNV(acc) {
     var viTri = danhsachNV.timNV(acc);
     if (viTri >= 0) {
         var nv = danhsachNV.mangNV[viTri];
-        
+
         document.getElementById("tknv").disabled = true;
         document.getElementById("tknv").value = nv.tk;
         document.getElementById("name").value = nv.tenNV;
@@ -146,4 +146,11 @@ document.getElementById("btnCapNhat").addEventListener("click", function () {
         $('#myModal').modal('hide');
         resetForm();
     }
+});
+
+document.getElementById("searchName").addEventListener("keyup", function () {
+    var chuoiTK = document.querySelector("#searchName").value.trim();
+    var mangKQ = danhsachNV.timkiemNVTheoLoai(chuoiTK);
+
+    hienthiDS(mangKQ);
 });

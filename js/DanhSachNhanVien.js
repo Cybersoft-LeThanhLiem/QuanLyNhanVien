@@ -30,4 +30,17 @@ function DanhSachNhanVien() {
             this.mangNV[viTri] = nv;
         }
     }
+
+    this.timkiemNVTheoLoai = function (txtLoai) {
+        var mangKQ = [];
+        var txtLoaiThuong = txtLoai.toLowerCase();
+        this.mangNV.forEach(function (item, index) {
+            var xepLoaiThuong = item.loai.toLowerCase();
+            var viTri = xepLoaiThuong.indexOf(txtLoaiThuong);
+            if (viTri >= 0) {
+                mangKQ.push(item);
+            }
+        });
+        return mangKQ;
+    }
 }
